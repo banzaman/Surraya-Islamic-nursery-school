@@ -1,14 +1,22 @@
-export default function Page() {
+import type { Metadata } from "next";
+import { AdmissionsHero } from "@/components/admissions/AdmissionsHero";
+import { WhoCanApply }    from "@/components/admissions/WhoCanApply";
+import { HowToJoin }      from "@/components/admissions/HowToJoin";
+import { FeeStructure }   from "@/components/admissions/FeeStructure";
+
+export const metadata: Metadata = {
+  title: "Admissions",
+  description:
+    "Apply to Surraya Islamic Nursery School. Learn about eligibility, our admissions process, and fee structure for Nursery One and Two.",
+};
+
+export default function AdmissionsPage() {
   return (
-    <section className="min-h-[60vh] flex items-center justify-center text-center px-4">
-      <div>
-        <h1 className="font-serif text-4xl" style={{ color: "var(--color-forest-deep)" }}>
-          Page coming soon
-        </h1>
-        <p className="mt-3" style={{ color: "var(--color-slate)" }}>
-          This page will be built in the upcoming sprint days.
-        </p>
-      </div>
-    </section>
+    <>
+      <AdmissionsHero />
+      <WhoCanApply />
+      <HowToJoin />
+      <FeeStructure />
+    </>
   );
 }

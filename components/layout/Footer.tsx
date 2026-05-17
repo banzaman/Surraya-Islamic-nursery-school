@@ -163,7 +163,7 @@ export function Footer() {
         </p>
         <p className="flex items-center gap-1">
           Made with{" "}
-          <Heart size={11} className="text-gold" aria-hidden="true" />{" "}
+          <Heart size={11} className="text-[var(--color-gold)]" aria-hidden="true" />{" "}
           in Kampala
         </p>
       </div>

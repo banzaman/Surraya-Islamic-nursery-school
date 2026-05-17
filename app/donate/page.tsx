@@ -1,14 +1,22 @@
-export default function Page() {
+import type { Metadata } from "next";
+import { DonateHero }        from "@/components/donate/DonateHero";
+import { WhereItGoes }       from "@/components/donate/WhereItGoes";
+import { DonationForm }      from "@/components/donate/DonationForm";
+import { CommunityPromise }  from "@/components/donate/CommunityPromise";
+
+export const metadata: Metadata = {
+  title: "Donate",
+  description:
+    "Support Surraya Islamic Nursery School. Your donation funds scholarships, learning resources, and facility development.",
+};
+
+export default function DonatePage() {
   return (
-    <section className="min-h-[60vh] flex items-center justify-center text-center px-4">
-      <div>
-        <h1 className="font-serif text-4xl" style={{ color: "var(--color-forest-deep)" }}>
-          Page coming soon
-        </h1>
-        <p className="mt-3" style={{ color: "var(--color-slate)" }}>
-          This page will be built in the upcoming sprint days.
-        </p>
-      </div>
-    </section>
+    <>
+      <DonateHero />
+      <WhereItGoes />
+      <DonationForm />
+      <CommunityPromise />
+    </>
   );
 }

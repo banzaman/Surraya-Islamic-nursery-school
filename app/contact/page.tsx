@@ -1,14 +1,35 @@
-export default function Page() {
+import type { Metadata } from "next";
+import { ContactForm } from "@/components/contact/ContactForm";
+import { FAQSection }  from "@/components/contact/FAQSection";
+
+export const metadata: Metadata = {
+  title: "Contact Us",
+  description:
+    "Get in touch with Surraya Islamic Nursery School. Find our address, phone, and email, or send us a message directly.",
+};
+
+export default function ContactPage() {
   return (
-    <section className="min-h-[60vh] flex items-center justify-center text-center px-4">
-      <div>
-        <h1 className="font-serif text-4xl" style={{ color: "var(--color-forest-deep)" }}>
-          Page coming soon
-        </h1>
-        <p className="mt-3" style={{ color: "var(--color-slate)" }}>
-          This page will be built in the upcoming sprint days.
+    <>
+      {/* Page header */}
+      <div
+        className="py-16 lg:py-20 text-center"
+        style={{ background: "var(--color-forest-deep)" }}
+      >
+        <p
+          className="mb-3 text-xs font-bold uppercase tracking-widest"
+          style={{ color: "var(--color-gold-bright)" }}
+        >
+          We&rsquo;d love to hear from you
         </p>
+        <h1
+          className="font-serif text-5xl sm:text-6xl text-white leading-tight"
+        >
+          Get in Touch
+        </h1>
       </div>
-    </section>
+      <ContactForm />
+      <FAQSection />
+    </>
   );
 }

@@ -85,7 +85,7 @@ export function Footer() {
             </h3>
             <ul className="space-y-2.5">
               {FOOTER_LINKS.school.map((link) => (
-                <li key={link.href}>
+                <li key={link.label}>
                   <Link
                     href={link.href}
                     className="text-sm transition-colors hover:text-white"
@@ -105,7 +105,7 @@ export function Footer() {
             </h3>
             <ul className="space-y-2.5">
               {FOOTER_LINKS.support.map((link) => (
-                <li key={link.href}>
+                <li key={link.label}>
                   <Link
                     href={link.href}
                     className="text-sm transition-colors hover:text-white"

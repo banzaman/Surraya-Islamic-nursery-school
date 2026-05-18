@@ -30,7 +30,7 @@ const CLUBS = [
   },
 ];
 
-export function Enrichment() {
+export function Enrichment({ clubs: cmsClubs }: { clubs?: typeof CLUBS[number][] }) {
   return (
     <>
       {/* ── Enrichment Cards ─────────────────────────────── */}
@@ -47,7 +47,7 @@ export function Enrichment() {
           />
 
           <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-6 lg:gap-7">
-            {CLUBS.map((club, i) => {
+            {(cmsClubs ?? CLUBS).map((club, i) => {
               const Icon = club.icon;
               const isGold = club.color === "gold";
               return (

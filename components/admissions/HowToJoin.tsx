@@ -35,7 +35,7 @@ const STEPS = [
   },
 ];
 
-export function HowToJoin() {
+export function HowToJoin({ steps: cmsSteps }: { steps?: typeof STEPS[number][] }) {
   return (
     <section
       className="py-20 lg:py-28"
@@ -50,7 +50,7 @@ export function HowToJoin() {
         />
 
         <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
-          {STEPS.map((step, i) => {
+          {(cmsSteps ?? STEPS).map((step, i) => {
             const Icon = step.icon;
             return (
               <motion.div

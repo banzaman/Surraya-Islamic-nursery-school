@@ -5,7 +5,7 @@ import { ArrowRight, CalendarDays } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { SITE } from "@/lib/constants";
 
-export function AdmissionsHero() {
+export function AdmissionsHero({ cms }: { cms?: { heading?: string; subheading?: string; badgeText?: string } }) {
   return (
     <section
       className="relative py-24 lg:py-32 overflow-hidden"

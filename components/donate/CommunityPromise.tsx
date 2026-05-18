@@ -19,7 +19,7 @@ const STATS = [
   { value: "340+",   label: "Alumni worldwide" },
 ];
 
-export function CommunityPromise() {
+export function CommunityPromise({ cms }: { cms?: { heading?: string; body?: string; stats?: any[]; testimonial?: any } }) {
   return (
     <section
       className="py-20 lg:py-28"
@@ -116,7 +116,7 @@ export function CommunityPromise() {
               className="mt-8 grid grid-cols-3 gap-4 rounded-2xl p-5"
               style={{ background: "white", border: "1.5px solid var(--color-border)" }}
             >
-              {STATS.map((stat) => (
+              {(cms?.stats ?? STATS).map((stat) => (
                 <div key={stat.label} className="flex flex-col items-center text-center">
                   <span
                     className="font-serif text-2xl lg:text-3xl"

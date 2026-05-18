@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { Heart, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 
-export function DonateHero() {
+export function DonateHero({ cms }: { cms?: { heading?: string; subheading?: string; badge?: string } }) {
   return (
     <section
       className="relative py-24 lg:py-32 overflow-hidden"

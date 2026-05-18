@@ -34,7 +34,7 @@ const REQUIREMENTS = [
   "Parent or guardian national ID",
 ];
 
-export function WhoCanApply() {
+export function WhoCanApply({ classes: cmsClasses, requirements: cmsReqs }: { classes?: typeof CLASSES[number][]; requirements?: string[] }) {
   return (
     <section
       className="py-20 lg:py-28"
@@ -50,7 +50,7 @@ export function WhoCanApply() {
 
         {/* Class cards */}
         <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8 max-w-3xl mx-auto">
-          {CLASSES.map((cls, i) => {
+          {(cmsClasses ?? CLASSES).map((cls, i) => {
             const Icon = cls.icon;
             return (
               <motion.div
@@ -122,7 +122,7 @@ export function WhoCanApply() {
             Documents Required
           </h3>
           <ul className="flex flex-col gap-3" role="list">
-            {REQUIREMENTS.map((req) => (
+            {(cmsReqs ?? REQUIREMENTS).map((req) => (
               <li key={req} className="flex items-start gap-3">
                 <CheckCircle2
                   size={17}

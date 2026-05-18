@@ -7,7 +7,7 @@ import { Heart, ArrowRight, Lock } from "lucide-react";
 type Frequency  = "one-time" | "monthly";
 type Designation = "General Fund" | "Scholarship Fund" | "Facility Development" | "Library & Resources" | "Teacher Training";
 
-const PRESET_AMOUNTS = [25, 50, 100, 250, 500];
+const DEFAULT_PRESETS = [25, 50, 100, 250, 500];
 const DESIGNATIONS: Designation[] = [
   "General Fund",
   "Scholarship Fund",
@@ -19,7 +19,7 @@ const DESIGNATIONS: Designation[] = [
 const HADITH =
   "When a person dies, all their deeds end except three: a continuing charity, beneficial knowledge, or a righteous child who prays for them.";
 
-export function DonationForm() {
+export function DonationForm({ cms }: { cms?: { hadith?: string; hadithSource?: string; presetAmounts?: number[]; impactBullets?: any[] } }) {
   const [frequency,    setFrequency]    = useState<Frequency>("one-time");
   const [preset,       setPreset]       = useState<number | null>(50);
   const [custom,       setCustom]       = useState("");
@@ -206,7 +206,7 @@ export function DonationForm() {
                       Select Amount
                     </p>
                     <div className="grid grid-cols-5 gap-2" role="group" aria-label="Preset donation amounts">
-                      {PRESET_AMOUNTS.map((amount) => (
+                      {(cms?.presetAmounts ?? DEFAULT_PRESETS).map((amount) => (
                         <button
                           key={amount}
                           type="button"

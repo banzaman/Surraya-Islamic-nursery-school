@@ -32,7 +32,7 @@ const FEES = [
   },
 ];
 
-export function FeeStructure() {
+export function FeeStructure({ fees: cmsFees, siblingDiscount: cmsSibling }: { fees?: typeof FEES[number][]; siblingDiscount?: string }) {
   return (
     <>
       {/* ── Fee Cards ─────────────────────────────────────── */}
@@ -49,7 +49,7 @@ export function FeeStructure() {
           />
 
           <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-6 lg:gap-7 items-stretch">
-            {FEES.map((fee, i) => (
+            {(cmsFees ?? FEES).map((fee, i) => (
               <motion.div
                 key={fee.title}
                 initial={{ opacity: 0, y: 28 }}

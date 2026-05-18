@@ -75,7 +75,7 @@ function StatItem({ value, label, index }: { value: string; label: string; index
   );
 }
 
-export function StatsCTA() {
+export function StatsCTA({ stats: cmsStats }: { stats?: typeof STATS[number][] }) {
   return (
     <>
       {/* ── Stats row ──────────────────────────────────── */}
@@ -86,7 +86,7 @@ export function StatsCTA() {
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-6">
-            {STATS.map((stat, i) => (
+            {(cmsStats ?? STATS).map((stat, i) => (
               <StatItem key={stat.label} value={stat.value} label={stat.label} index={i} />
             ))}
           </div>

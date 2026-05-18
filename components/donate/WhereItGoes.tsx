@@ -103,7 +103,7 @@ function ProgressBar({ percent }: { percent: number }) {
   );
 }
 
-export function WhereItGoes() {
+export function WhereItGoes({ causes: cmsCauses }: { causes?: typeof CAUSES[number][] }) {
   return (
     <section
       className="py-20 lg:py-28"
@@ -118,7 +118,7 @@ export function WhereItGoes() {
         />
 
         <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
-          {CAUSES.map((cause, i) => {
+          {(cmsCauses ?? CAUSES).map((cause, i) => {
             const Icon = cause.icon;
             const isGold = cause.color === "gold";
             return (

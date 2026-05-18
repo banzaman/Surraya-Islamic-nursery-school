@@ -22,7 +22,7 @@ const PILLARS = [
   },
 ];
 
-export function IslamicStudies() {
+export function IslamicStudies({ cms }: { cms?: { heading?: string; body?: string; hadith?: string; hadithSource?: string; pillars?: any[] } }) {
   return (
     <section
       className="py-20 lg:py-28 relative overflow-hidden"

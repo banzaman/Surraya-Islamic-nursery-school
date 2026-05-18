@@ -23,7 +23,8 @@ const GRID_PHOTOS = [
   { label: "Outdoor Play",      span: "col-span-2",  bg: "from-sand to-forest-light" },
 ];
 
-export function HeroSection() {
+interface HeroCMS { heading?: string; subheading?: string; badge?: string; ctaPrimary?: string; ctaSecondary?: string }
+export function HeroSection({ cms }: { cms?: HeroCMS }) {
   return (
     <section
       className="relative min-h-[92vh] flex items-center overflow-hidden"
@@ -62,7 +63,7 @@ export function HeroSection() {
                 }}
               >
                 <Star size={11} fill="currentColor" aria-hidden="true" />
-                Est. {SITE.founded} — Kampala, Uganda
+                {cms?.badge ?? `Est. ${SITE.founded} — Kampala, Uganda`}
               </span>
             </motion.div>
 
@@ -72,14 +73,13 @@ export function HeroSection() {
               className="font-serif text-5xl sm:text-6xl lg:text-[3.75rem] xl:text-7xl leading-[1.08] tracking-tight"
               style={{ color: "var(--color-forest-deep)" }}
             >
-              Nurturing
+              {cms?.heading ?? "Nurturing"}
               <span
                 className="block italic"
                 style={{ color: "var(--color-forest)" }}
               >
-                Minds Rooted
+                {cms?.subheading ?? "Minds Rooted in Faith"}
               </span>
-              in Faith
             </motion.h1>
 
             {/* Sub-copy */}

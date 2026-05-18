@@ -32,8 +32,9 @@ const FAQS = [
   },
 ];
 
-export function FAQSection() {
-  const [openId, setOpenId] = useState<string | null>(FAQS[0].id);
+export function FAQSection({ faqs: cmsFaqs }: { faqs?: typeof FAQS[number][] }) {
+  const activeFaqs = cmsFaqs?.map((f, i) => ({ ...f, id: `faq-cms-${i}` })) ?? FAQS;
+  const [openId, setOpenId] = useState<string | null>(activeFaqs[0]?.id ?? null);
 
   const toggle = (id: string) => setOpenId((prev) => (prev === id ? null : id));
 
@@ -51,7 +52,7 @@ export function FAQSection() {
         />
 
         <div className="mt-12 flex flex-col gap-3" role="list">
-          {FAQS.map((faq, i) => {
+          {activeFaqs.map((faq, i) => {
             const isOpen    = openId === faq.id;
             const panelId   = `${faq.id}-panel`;
             const triggerId = `${faq.id}-trigger`;

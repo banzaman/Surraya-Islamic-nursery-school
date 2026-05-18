@@ -7,7 +7,7 @@ import { SITE } from "@/lib/constants";
 
 type Field = "name" | "email" | "subject" | "message";
 
-const SUBJECTS = [
+const DEFAULT_SUBJECTS = [
   "General Enquiry",
   "Admissions",
   "Fees & Payments",
@@ -29,7 +29,7 @@ const SocialSVG = ({ platform }: { platform: string }) => {
   );
 };
 
-export function ContactForm() {
+export function ContactForm({ subjects: cmsSubjects }: { subjects?: string[] }) {
   const [values, setValues] = useState({ name: "", email: "", subject: "", message: "" });
   const [errors, setErrors] = useState<Partial<Record<Field, string>>>({});
   const [sent,   setSent]   = useState(false);
@@ -285,7 +285,7 @@ export function ContactForm() {
                       aria-invalid={!!errors.subject}
                     >
                       <option value="" disabled>Select a subject…</option>
-                      {SUBJECTS.map((s) => (
+                      {(cmsSubjects ?? DEFAULT_SUBJECTS).map((s) => (
                         <option key={s} value={s}>{s}</option>
                       ))}
                     </select>,

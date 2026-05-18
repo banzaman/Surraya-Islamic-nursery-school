@@ -11,7 +11,7 @@ const ICONS: Record<string, React.ElementType> = {
   Globe:    Globe2,
 };
 
-export function FoundationPillars() {
+export function FoundationPillars({ pillars: cmsPillars }: { pillars?: typeof PILLARS[number][] }) {
   return (
     <section
       className="py-20 lg:py-28"
@@ -26,7 +26,7 @@ export function FoundationPillars() {
         />
 
         <div className="mt-14 grid grid-cols-1 sm:grid-cols-3 gap-6 lg:gap-8">
-          {PILLARS.map((pillar, i) => {
+          {(cmsPillars ?? PILLARS).map((pillar, i) => {
             const Icon = ICONS[pillar.icon] ?? Star;
             return (
               <motion.div

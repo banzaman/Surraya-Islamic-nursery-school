@@ -7,7 +7,7 @@ import { PhotoBlock } from "@/components/ui/PhotoBlock";
 
 const BADGES = ["EYFS Aligned", "100% Faith-Centered", "Holistic Learning"];
 
-export function AcademicsHero() {
+export function AcademicsHero({ cms }: { cms?: { heading?: string; subheading?: string; badges?: string[] } }) {
   return (
     <section
       className="relative py-20 lg:py-28 overflow-hidden"

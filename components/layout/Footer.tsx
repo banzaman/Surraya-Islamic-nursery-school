@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Mail, MapPin, Phone, Heart } from "lucide-react";
 import { SITE, FOOTER_LINKS } from "@/lib/constants";
 import { NewsletterForm } from "./NewsletterForm";
@@ -44,13 +45,13 @@ export function Footer() {
               className="flex items-center gap-3 no-underline mb-4"
               aria-label={`${SITE.name} — Home`}
             >
-              <span
-                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-lg font-bold"
-                style={{ background: "var(--color-gold)", color: "var(--color-forest-deep)" }}
-                aria-hidden="true"
-              >
-                ☽
-              </span>
+              <Image
+                src="/logo.png"
+                alt={SITE.name}
+                width={52}
+                height={52}
+                className="h-13 w-13 shrink-0 object-contain"
+              />
               <span className="font-serif text-xl text-white leading-tight">
                 Surraya
                 <span className="block text-xs font-sans font-medium tracking-widest uppercase opacity-60">

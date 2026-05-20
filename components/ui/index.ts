@@ -1,4 +1,5 @@
-export { Button }       from "./Button";
-export { Card }         from "./Card";
-export { SectionHeader } from "./SectionHeader";
-export { PhotoBlock }   from "./PhotoBlock";
+export { Button }          from "./Button";
+export { Card }            from "./Card";
+export { SectionHeader }   from "./SectionHeader";
+export { PhotoBlock }      from "./PhotoBlock";
+export { AnimatedSection, StaggerContainer, StaggerChild } from "./AnimatedSection";

@@ -1,14 +1,32 @@
-export default function Page() {
+import type { Metadata } from "next";
+import { SITE }              from "@/lib/constants";
+import { sanityFetch }       from "@/sanity/lib/fetch";
+import { ACADEMICS_PAGE_QUERY } from "@/sanity/lib/queries";
+import { AcademicsHero }  from "@/components/academics/AcademicsHero";
+import { EYFSFramework }  from "@/components/academics/EYFSFramework";
+import { IslamicStudies } from "@/components/academics/IslamicStudies";
+import { Enrichment }     from "@/components/academics/Enrichment";
+
+export const revalidate = 60;
+
+const title       = "Academics — Faith-Guided EYFS Curriculum";
+const description = "Discover our EYFS-aligned curriculum enriched with Islamic values. Five areas of learning, integrated Quranic studies, and enrichment activities for ages 2.5–5.";
+
+export const metadata: Metadata = {
+  title,
+  description,
+  openGraph: { title, description, url: `${SITE.url}/academics` },
+};
+
+export default async function AcademicsPage() {
+  const cms = await sanityFetch<any>(ACADEMICS_PAGE_QUERY);
+
   return (
-    <section className="min-h-[60vh] flex items-center justify-center text-center px-4">
-      <div>
-        <h1 className="font-serif text-4xl" style={{ color: "var(--color-forest-deep)" }}>
-          Page coming soon
-        </h1>
-        <p className="mt-3" style={{ color: "var(--color-slate)" }}>
-          This page will be built in the upcoming sprint days.
-        </p>
-      </div>
-    </section>
+    <>
+      <AcademicsHero  cms={cms?.hero} />
+      <EYFSFramework  areas={cms?.eyfsAreas} />
+      <IslamicStudies cms={cms?.islamicStudies} />
+      <Enrichment     clubs={cms?.enrichmentClubs} />
+    </>
   );
 }

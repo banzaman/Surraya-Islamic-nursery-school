@@ -80,3 +80,32 @@ a, button { transition: color 0.2s ease, background-color 0.2s ease, transform 0
   background: var(--color-gold);
   color: var(--color-forest-deep);
 }
+
+/* ─── Accessibility ─────────────────────────────────────── */
+/* Reduced motion — respect user OS preference */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration:   0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration:  0.01ms !important;
+    scroll-behavior:      auto !important;
+  }
+}
+
+/* ─── Selection colour ──────────────────────────────────── */
+::selection {
+  background: var(--color-gold-light);
+  color:      var(--color-forest-deep);
+}
+
+/* ─── Scrollbar (webkit) ────────────────────────────────── */
+::-webkit-scrollbar         { width: 6px; }
+::-webkit-scrollbar-track   { background: var(--color-cream); }
+::-webkit-scrollbar-thumb   { background: var(--color-forest-light); border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-forest-mid); }
+
+/* ─── Print ─────────────────────────────────────────────── */
+@media print {
+  .skip-link, nav, footer { display: none; }
+  body { background: white; color: black; }
+}

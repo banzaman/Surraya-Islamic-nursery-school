@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { NAV_LINKS, SITE } from "@/lib/constants";
@@ -48,14 +49,14 @@ export function Navbar() {
             className="flex items-center gap-3 no-underline"
             aria-label={`${SITE.name} — Home`}
           >
-            {/* Star-and-crescent emblem */}
-            <span
-              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-white text-lg font-bold shadow"
-              style={{ background: "var(--color-forest)" }}
-              aria-hidden="true"
-            >
-              ☽
-            </span>
+            <Image
+              src="/logo.png"
+              alt={SITE.name}
+              width={48}
+              height={48}
+              className="h-12 w-12 shrink-0 object-contain"
+              priority
+            />
             <span
               className="hidden sm:block font-serif text-xl leading-tight"
               style={{ color: "var(--color-forest-deep)" }}

@@ -15,7 +15,7 @@ const GALLERY_ITEMS = [
   { label: "Team Play",          aspect: "aspect-[4/3]",  bg: "from-[#e8f5ee] to-[#2d7a4f]/25" },
 ];
 
-export function GalleryPreview() {
+export function GalleryPreview({ gallery: cmsGallery }: { gallery?: any[] | null }) {
   return (
     <section
       className="py-20 lg:py-28"
@@ -43,7 +43,7 @@ export function GalleryPreview() {
 
         {/* Masonry-style grid using CSS columns */}
         <div className="columns-2 sm:columns-3 gap-4 space-y-0">
-          {GALLERY_ITEMS.map((item, i) => (
+          {(cmsGallery ?? GALLERY_ITEMS).map((item, i) => (
             <motion.div
               key={item.label}
               initial={{ opacity: 0, scale: 0.95 }}

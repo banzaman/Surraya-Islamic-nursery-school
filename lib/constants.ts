@@ -6,10 +6,10 @@ export const SITE = {
     "Surraya Islamic Nursery School provides a holistic early-years education grounded in Islamic values, the EYFS framework, and a love of learning.",
   url: "https://surraya.ac.ug",
   founded: 2009,
-  email: "info@surraya.ac.ug",
-  phone: "+256 700 000 000",
-  address: "Plot 14, Kisasi Road, Kampala, Uganda",
-  mapLink: "https://maps.google.com",
+  email: "surrayaislamicnurseryschool@gmail.com",
+  phone: "+256757797639",
+  address: "Makerere, Kampala, Uganda",
+  mapLink: "https://share.google/sUWFVRZ6pe11cHtVT",
 } as const;
 
 // ─── Navigation ──────────────────────────────────────────
@@ -99,15 +99,14 @@ export const SOCIAL_LINKS = [
 // ─── Footer Columns ──────────────────────────────────────
 export const FOOTER_LINKS = {
   school: [
-    { label: "About Us",     href: "#" },
+    { label: "About Us",     href: "/" },
     { label: "Academics",    href: "/academics" },
     { label: "Admissions",   href: "/admissions" },
-    { label: "Gallery",      href: "#" },
   ],
   support: [
     { label: "Donate",       href: "/donate" },
-    { label: "Volunteer",    href: "#" },
-    { label: "Alumni",       href: "#" },
+    { label: "Volunteer",    href: "/contact" },
+    { label: "Alumni",       href: "/contact" },
     { label: "Contact Us",   href: "/contact" },
   ],
 } as const;

@@ -2,7 +2,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { Mail, MapPin, Phone, Heart } from "lucide-react";
 import { SITE, FOOTER_LINKS } from "@/lib/constants";
-import { NewsletterForm } from "./NewsletterForm";
 
 // Inline SVG brand icons (lucide-react removed brand icons)
 const SocialIcon = ({ platform }: { platform: string }) => {
@@ -148,13 +147,6 @@ export function Footer() {
               </p>
             </address>
 
-            {/* Newsletter */}
-            <div className="mt-6">
-              <p className="text-xs font-semibold uppercase tracking-wider mb-2 text-white/40">
-                Newsletter
-              </p>
-              <NewsletterForm />
-            </div>
           </div>
         </div>
       </div>

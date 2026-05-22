@@ -13,12 +13,6 @@ const TESTIMONIALS = [
   },
 ];
 
-const STATS = [
-  { value: "1,200+", label: "Children impacted" },
-  { value: "15",     label: "Years of service" },
-  { value: "340+",   label: "Alumni worldwide" },
-];
-
 export function CommunityPromise({ cms }: { cms?: { heading?: string; body?: string; stats?: any[]; testimonial?: any } }) {
   return (
     <section
@@ -110,29 +104,6 @@ export function CommunityPromise({ cms }: { cms?: { heading?: string; body?: str
               We are fully transparent about how donations are used. Annual impact reports
               are published and shared with all donors. Your trust is our greatest asset.
             </p>
-
-            {/* Stats row */}
-            <div
-              className="mt-8 grid grid-cols-3 gap-4 rounded-2xl p-5"
-              style={{ background: "white", border: "1.5px solid var(--color-border)" }}
-            >
-              {(cms?.stats ?? STATS).map((stat) => (
-                <div key={stat.label} className="flex flex-col items-center text-center">
-                  <span
-                    className="font-serif text-2xl lg:text-3xl"
-                    style={{ color: "var(--color-forest-deep)" }}
-                  >
-                    {stat.value}
-                  </span>
-                  <span
-                    className="mt-1 text-xs font-medium"
-                    style={{ color: "var(--color-muted)" }}
-                  >
-                    {stat.label}
-                  </span>
-                </div>
-              ))}
-            </div>
 
             <div className="mt-8 flex flex-wrap gap-4">
               <Button href="#donation-form" variant="primary" size="lg">

@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/Button";
 const FEES = [
   {
     title:       "Registration Fee",
-    amount:      "$150",
+    amount:      { ugx: "30,000", usd: "7.92" },
     period:      "one-time",
     description: "Paid once upon acceptance of the offer letter to secure your child's place.",
     items:       ["Non-refundable", "Covers administrative processing", "Confirms enrolment"],
@@ -16,18 +16,18 @@ const FEES = [
   },
   {
     title:       "Tuition Fee",
-    amount:      "$850",
+    amount:      { ugx: "370,000", usd: "97.69" },
     period:      "per term",
     description: "Covers all core learning materials, EYFS resources, and Islamic Studies curriculum.",
     items:       ["Three terms per year", "Instalment plan available", "Includes all textbooks"],
     highlight:   true,
   },
   {
-    title:       "Facility Levy",
-    amount:      "$200",
+    title:       "School Uniform",
+    amount:      { ugx: "200,000", usd: "52.80" },
     period:      "annual",
-    description: "Contributes to the ongoing maintenance, development, and improvement of school facilities.",
-    items:       ["Paid once per academic year", "Covers grounds & safety", "Technology resources"],
+    description: "Provides official school uniform items for enrolled students.",
+    items:       ["Includes top, bottom, and badge", "Available in all sizes", "Replacement items sold separately"],
     highlight:   false,
   },
 ];
@@ -87,20 +87,23 @@ export function FeeStructure({ fees: cmsFees, siblingDiscount: cmsSibling }: { f
                     </span>
                   </div>
 
-                  {/* Amount */}
-                  <div className="mt-3 mb-4 flex items-baseline gap-1.5">
-                    <span
-                      className="font-serif text-4xl"
-                      style={{ color: "var(--color-forest-deep)" }}
-                    >
-                      {fee.amount}
-                    </span>
-                    <span
-                      className="text-sm font-medium"
-                      style={{ color: "var(--color-muted)" }}
-                    >
-                      / {fee.period}
-                    </span>
+                  {/* Amount (UGX + USD) */}
+                  <div className="mt-3 mb-4 flex items-baseline gap-3">
+                    {typeof fee.amount === "object" ? (
+                      <>
+                        <span className="font-serif text-3xl" style={{ color: "var(--color-forest-deep)" }}>
+                          UGX {fee.amount.ugx}
+                        </span>
+                        <span className="text-sm font-medium" style={{ color: "var(--color-muted)" }}>
+                          (${fee.amount.usd})
+                        </span>
+                      </>
+                    ) : (
+                      <span className="font-serif text-3xl" style={{ color: "var(--color-forest-deep)" }}>
+                        {fee.amount}
+                      </span>
+                    )}
+                    <span className="text-sm font-medium" style={{ color: "var(--color-muted)" }}>/ {fee.period}</span>
                   </div>
 
                   <p
@@ -132,7 +135,7 @@ export function FeeStructure({ fees: cmsFees, siblingDiscount: cmsSibling }: { f
             ))}
           </div>
 
-          {/* Sibling discount info bar */}
+          {/* Pricing disclaimer */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -149,8 +152,9 @@ export function FeeStructure({ fees: cmsFees, siblingDiscount: cmsSibling }: { f
               aria-hidden="true"
             />
             <p className="text-sm" style={{ color: "var(--color-forest-deep)" }}>
-              <strong>Sibling Discount:</strong> Families enrolling a second or subsequent child receive a
-              10% reduction on tuition fees for the younger child. Please mention this during your application.
+              Our official prices are billed in Ugandan Shillings (UGX). The USD equivalent provided is for
+              reference only and will be recalculated based on the prevailing exchange rate at the time of
+              final payment.
             </p>
           </motion.div>
         </div>
@@ -194,15 +198,6 @@ export function FeeStructure({ fees: cmsFees, siblingDiscount: cmsSibling }: { f
             transition={{ delay: 0.2, duration: 0.45, ease: "easeOut" as const }}
             className="mt-8 flex flex-wrap gap-4 justify-center"
           >
-            <Button
-              href="#"
-              variant="secondary"
-              size="lg"
-              icon={<ArrowRight size={17} />}
-              iconPosition="right"
-            >
-              Apply Now Online
-            </Button>
             <Button
               href="/contact"
               variant="outline"

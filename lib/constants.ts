@@ -38,10 +38,8 @@ export const COLORS = {
 
 // ─── Home Page Stats ─────────────────────────────────────
 export const STATS = [
-  { value: "1.2K+", label: "Students Enrolled" },
-  { value: "15",    label: "Years of Excellence" },
-  { value: "100%",  label: "Faith-Centered" },
-  { value: "98%",   label: "Parent Satisfaction" },
+  { value: "100%", label: "Faith-Centered" },
+  { value: "98%",  label: "Parent Satisfaction" },
 ] as const;
 
 // ─── Foundation Pillars ───────────────────────────────────

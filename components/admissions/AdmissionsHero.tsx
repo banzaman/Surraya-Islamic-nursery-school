@@ -36,7 +36,7 @@ export function AdmissionsHero({ cms }: { cms?: { heading?: string; subheading?:
           style={{ borderColor: "var(--color-gold)", color: "var(--color-gold)" }}
         >
           <CalendarDays size={12} aria-hidden="true" />
-          Admissions Open — {new Date().getFullYear()}
+          Admissions Open
         </motion.div>
 
         <motion.h1
@@ -52,7 +52,7 @@ export function AdmissionsHero({ cms }: { cms?: { heading?: string; subheading?:
           and Learning
         </motion.h1>
 
-        <motion.p
+          <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.55, delay: 0.22, ease: "easeOut" }}
@@ -60,7 +60,7 @@ export function AdmissionsHero({ cms }: { cms?: { heading?: string; subheading?:
           style={{ color: "rgba(255,255,255,0.72)" }}
         >
           Giving your child the gift of an education rooted in faith, curiosity, and
-          character. Surraya has been shaping futures in Kampala since {SITE.founded}.
+          character. Surraya has been shaping futures in Kampala.
         </motion.p>
 
         <motion.div
@@ -96,9 +96,8 @@ export function AdmissionsHero({ cms }: { cms?: { heading?: string; subheading?:
           className="mt-14 flex flex-wrap justify-center gap-10"
         >
           {[
-            { n: "2 Levels", l: "Nursery One & Two" },
-            { n: "Oct – Nov", l: "Application Window" },
-            { n: "5 Days",    l: "Decision Turnaround" },
+            { n: "3 Levels", l: "Nursery One, Two & Three" },
+            { n: "5 Days",   l: "Decision Turnaround" },
           ].map(({ n, l }) => (
             <div key={l} className="flex flex-col items-center gap-1">
               <span className="font-serif text-2xl text-white">{n}</span>

@@ -320,35 +320,28 @@ export function ContactForm({ subjects: cmsSubjects }: { subjects?: string[] }) 
           </motion.div>
         </div>
 
-        {/* ── Map Placeholder ────────────────────────────── */}
+        {/* ── Google Maps Embed ────────────────────────── */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" as const }}
-          className="mt-14 rounded-3xl overflow-hidden flex items-center justify-center"
+          className="mt-14 rounded-3xl overflow-hidden"
           style={{
-            height:     "340px",
-            background: "linear-gradient(135deg, var(--color-forest-light), var(--color-sand))",
-            border:     "1.5px solid var(--color-border)",
+            height: "340px",
+            border: "1.5px solid var(--color-border)",
           }}
-          aria-label="Map placeholder — swap with Google Maps embed"
-          role="img"
         >
-          <div className="flex flex-col items-center gap-3 text-center">
-            <div
-              className="flex h-14 w-14 items-center justify-center rounded-full shadow-lg"
-              style={{ background: "var(--color-forest)", color: "white" }}
-            >
-              <MapPin size={24} aria-hidden="true" />
-            </div>
-            <p className="font-serif text-xl" style={{ color: "var(--color-forest-deep)" }}>
-              {SITE.address}
-            </p>
-            <p className="text-xs font-medium" style={{ color: "var(--color-muted)" }}>
-              Map embed goes here — replace with Google Maps or Mapbox iframe
-            </p>
-          </div>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63835.93764530689!2d32.485048921679684!3d0.34473310000000207!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x177dbb136a069f91%3A0xdb01d8b5dcf163d1!2sSURRAYA%20ISLAMIC%20NURSERY%20SCHOOL!5e0!3m2!1sen!2sug!4v1779476190025!5m2!1sen!2sug"
+            width="100%"
+            height="100%"
+            style={{ border: 0 }}
+            allowFullScreen={true}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            title="Surraya Islamic Nursery School location"
+          />
         </motion.div>
       </div>
     </section>

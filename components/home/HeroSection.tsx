@@ -63,7 +63,7 @@ export function HeroSection({ cms }: { cms?: HeroCMS }) {
                 }}
               >
                 <Star size={11} fill="currentColor" aria-hidden="true" />
-                {cms?.badge ?? `Est. ${SITE.founded} — Kampala, Uganda`}
+                {cms?.badge ?? "Kampala, Uganda"}
               </span>
             </motion.div>
 
@@ -109,16 +109,15 @@ export function HeroSection({ cms }: { cms?: HeroCMS }) {
               </Button>
             </motion.div>
 
-            {/* Quick trust strip */}
+            {/* Quick trust strip (simplified) */}
             <motion.div
               variants={fadeUp}
               className="mt-10 flex flex-wrap gap-6 text-sm font-medium"
               style={{ color: "var(--color-muted)" }}
             >
               {[
-                { n: "1,200+", l: "Children Enrolled" },
-                { n: "15 yrs", l: "of Excellence" },
-                { n: "98%",    l: "Parent Satisfaction" },
+                { n: "100%", l: "Faith-Centered" },
+                { n: "98%",  l: "Parent Satisfaction" },
               ].map(({ n, l }) => (
                 <div key={l} className="flex items-center gap-2">
                   <span

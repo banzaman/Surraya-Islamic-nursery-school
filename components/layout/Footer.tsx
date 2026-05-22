@@ -57,7 +57,7 @@ export function Footer() {
               </span>
             </Link>
             <p className="text-sm leading-relaxed opacity-70 mb-5">
-              {SITE.tagline}. Nurturing children with faith, knowledge, and purpose since {SITE.founded}.
+              {SITE.tagline}. Nurturing children with faith, knowledge, and purpose.
             </p>
             {/* Social */}
             <div className="flex gap-3">

@@ -52,6 +52,8 @@ export function IslamicStudies({ cms }: { cms?: { heading?: string; body?: strin
               label="Islamic Studies"
               rounded
               className="w-full opacity-90"
+              imageSrc="/academics/enrichment-2.jpg"
+              imageAlt="Children engaged in Islamic learning"
             />
             {/* Hadith card overlay */}
             <div

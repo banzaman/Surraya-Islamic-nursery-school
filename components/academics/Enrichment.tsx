@@ -67,6 +67,13 @@ export function Enrichment({ clubs: cmsClubs }: { clubs?: typeof CLUBS[number][]
                       label={club.title}
                       rounded={false}
                       className="transition-transform duration-500 group-hover:scale-105"
+                      imageSrc={
+                        i === 0 ? "/academics/enrichment-1.jpg"
+                        : i === 1 ? "/academics/enrichment-2.jpg"
+                        : i === 2 ? "/academics/enrichment-3.jpg"
+                        : undefined
+                      }
+                      imageAlt={club.title}
                     />
                     {/* Tag badge */}
                     <span

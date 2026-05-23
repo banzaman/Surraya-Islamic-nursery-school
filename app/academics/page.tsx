@@ -5,7 +5,8 @@ import { ACADEMICS_PAGE_QUERY } from "@/sanity/lib/queries";
 import { AcademicsHero }  from "@/components/academics/AcademicsHero";
 import { EYFSFramework }  from "@/components/academics/EYFSFramework";
 import { IslamicStudies } from "@/components/academics/IslamicStudies";
-import { Enrichment }     from "@/components/academics/Enrichment";
+import { Button } from "@/components/ui/Button";
+import { ArrowRight } from "lucide-react";
 
 export const revalidate = 60;
 
@@ -26,7 +27,40 @@ export default async function AcademicsPage() {
       <AcademicsHero  cms={cms?.hero} />
       <EYFSFramework  areas={cms?.eyfsAreas} />
       <IslamicStudies cms={cms?.islamicStudies} />
-      <Enrichment     clubs={cms?.enrichmentClubs} />
+      <section
+        className="py-16 lg:py-20"
+        style={{ background: "var(--color-forest-light)" }}
+        aria-label="Academic call to action"
+      >
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
+          <h2
+            className="font-serif text-4xl lg:text-5xl"
+            style={{ color: "var(--color-forest-deep)" }}
+          >
+            See It For Yourself
+          </h2>
+          <p
+            className="mt-4 text-base lg:text-lg"
+            style={{ color: "var(--color-slate)" }}
+          >
+            Book a tour or download our prospectus to learn everything about life at Surraya.
+          </p>
+          <div className="mt-8 flex flex-wrap gap-4 justify-center">
+            <Button
+              href="/contact"
+              variant="primary"
+              size="lg"
+              icon={<ArrowRight size={17} />}
+              iconPosition="right"
+            >
+              Schedule a Visit
+            </Button>
+            <Button href="/admissions" variant="outline" size="lg">
+              View Admissions
+            </Button>
+          </div>
+        </div>
+      </section>
     </>
   );
 }

@@ -2,10 +2,9 @@ import type { Metadata } from "next";
 import { SITE }            from "@/lib/constants";
 import { sanityFetch }     from "@/sanity/lib/fetch";
 import { DONATE_PAGE_QUERY } from "@/sanity/lib/queries";
-import { DonateHero }       from "@/components/donate/DonateHero";
-import { WhereItGoes }      from "@/components/donate/WhereItGoes";
-import { DonationForm }     from "@/components/donate/DonationForm";
-import { CommunityPromise } from "@/components/donate/CommunityPromise";
+import { DonateHero }   from "@/components/donate/DonateHero";
+import { WhereItGoes }  from "@/components/donate/WhereItGoes";
+import { DonationForm } from "@/components/donate/DonationForm";
 
 export const revalidate = 60;
 
@@ -23,10 +22,9 @@ export default async function DonatePage() {
 
   return (
     <>
-      <DonateHero      cms={cms?.hero} />
-      <WhereItGoes     causes={cms?.causes} />
-      <DonationForm    cms={cms?.formSection} />
-      <CommunityPromise cms={cms?.communityPromise} />
+      <DonateHero   cms={cms?.hero} />
+      <WhereItGoes  causes={cms?.causes} />
+      <DonationForm cms={cms?.formSection} />
     </>
   );
 }

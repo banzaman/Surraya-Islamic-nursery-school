@@ -6,6 +6,8 @@ interface PhotoBlockProps {
   label?:      string;
   aspectRatio?: "square" | "video" | "portrait" | "wide";
   rounded?:    boolean;
+  imageSrc?:   string;
+  imageAlt?:   string;
 }
 
 const aspectMap = {
@@ -20,6 +22,8 @@ export function PhotoBlock({
   label,
   aspectRatio = "video",
   rounded     = true,
+  imageSrc,
+  imageAlt,
 }: PhotoBlockProps) {
   return (
     <div
@@ -33,14 +37,23 @@ export function PhotoBlock({
       role="img"
       aria-label={label ?? "Photo placeholder"}
     >
-      <div className="flex flex-col items-center gap-2 text-[var(--color-forest-mid)] opacity-50">
-        <ImageIcon size={32} />
-        {label && (
-          <span className="text-xs font-medium font-sans uppercase tracking-wider">
-            {label}
-          </span>
-        )}
-      </div>
+      {imageSrc ? (
+        <img
+          src={imageSrc}
+          alt={imageAlt ?? label ?? "Academic photo"}
+          className="h-full w-full object-cover"
+          loading="lazy"
+        />
+      ) : (
+        <div className="flex flex-col items-center gap-2 text-[var(--color-forest-mid)] opacity-50">
+          <ImageIcon size={32} />
+          {label && (
+            <span className="text-xs font-medium font-sans uppercase tracking-wider">
+              {label}
+            </span>
+          )}
+        </div>
+      )}
     </div>
   );
 }

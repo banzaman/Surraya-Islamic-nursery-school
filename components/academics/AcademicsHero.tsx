@@ -91,6 +91,8 @@ export function AcademicsHero({ cms }: { cms?: { heading?: string; subheading?: 
               label="Learning Environment"
               className="w-full"
               rounded
+              imageSrc="/home/IMG-20260513-WA0006.jpg"
+              imageAlt="Children learning during morning assembly"
             />
             {/* Floating 100% badge */}
             <div

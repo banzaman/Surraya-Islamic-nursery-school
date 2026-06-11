@@ -2,7 +2,6 @@
 
 import { defineConfig } from "sanity";
 import { structureTool } from "sanity/structure";
-import { visionTool } from "@sanity/vision";
 import {
   siteSettings,
   homePage,
@@ -69,7 +68,6 @@ export default defineConfig({
 
   plugins: [
     structureTool({ structure }),
-    visionTool({ defaultApiVersion: apiVersion }),
   ],
 
   schema: {

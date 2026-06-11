@@ -33,6 +33,7 @@ export function ContactForm({ subjects: cmsSubjects }: { subjects?: string[] }) 
   const [values, setValues] = useState({ name: "", email: "", subject: "", message: "" });
   const [errors, setErrors] = useState<Partial<Record<Field, string>>>({});
   const [sent,   setSent]   = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const validate = () => {
     const e: Partial<Record<Field, string>> = {};
@@ -44,13 +45,30 @@ export function ContactForm({ subjects: cmsSubjects }: { subjects?: string[] }) 
     return e;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const errs = validate();
     setErrors(errs);
     if (Object.keys(errs).length === 0) {
-      setSent(true);
-      setValues({ name: "", email: "", subject: "", message: "" });
+      setLoading(true);
+      try {
+        const response = await fetch("/api/contact", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(values),
+        });
+        
+        if (response.ok) {
+          setSent(true);
+          setValues({ name: "", email: "", subject: "", message: "" });
+        } else {
+          setErrors({ message: "Failed to send message. Please try again." });
+        }
+      } catch (error) {
+        setErrors({ message: "Failed to send message. Please try again." });
+      } finally {
+        setLoading(false);
+      }
     }
   };
 
@@ -308,11 +326,12 @@ export function ContactForm({ subjects: cmsSubjects }: { subjects?: string[] }) 
 
                   <button
                     type="submit"
-                    className="flex items-center justify-center gap-2 rounded-xl py-4 text-base font-bold transition-all duration-200 active:scale-[0.98]"
+                    disabled={loading}
+                    className="flex items-center justify-center gap-2 rounded-xl py-4 text-base font-bold transition-all duration-200 active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed"
                     style={{ background: "var(--color-forest)", color: "white" }}
                   >
                     <Send size={17} aria-hidden="true" />
-                    Send Message
+                    {loading ? "Sending..." : "Send Message"}
                   </button>
                 </form>
               )}

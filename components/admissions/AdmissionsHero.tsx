@@ -70,7 +70,7 @@ export function AdmissionsHero({ cms }: { cms?: { heading?: string; subheading?:
           className="mt-9 flex flex-wrap gap-4 justify-center"
         >
           <Button
-            href="#"
+            href="/contact"
             variant="secondary"
             size="lg"
             icon={<ArrowRight size={18} />}

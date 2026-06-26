@@ -1,9 +1,9 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { Music, Palette, Compass, ArrowRight } from "lucide-react";
 import { SectionHeader } from "@/components/ui/SectionHeader";
-import { PhotoBlock } from "@/components/ui/PhotoBlock";
 import { Button } from "@/components/ui/Button";
 
 const CLUBS = [
@@ -13,6 +13,7 @@ const CLUBS = [
     tag:         "Spiritual",
     description: "A dedicated weekly session for Quranic recitation, where children learn the beauty and rules of Tajweed through listening, repetition, and gentle practice.",
     color:       "forest",
+    src:         "/academics/enrichment-1.jpg",
   },
   {
     icon:        Palette,
@@ -20,6 +21,7 @@ const CLUBS = [
     tag:         "Expression",
     description: "Painting, collage, clay, and crafts — our creative studio gives children space to express themselves, build fine motor skills, and discover the joy of making.",
     color:       "gold",
+    src:         "/academics/enrichment-2.jpg",
   },
   {
     icon:        Compass,
@@ -27,13 +29,13 @@ const CLUBS = [
     tag:         "Discovery",
     description: "Nature walks, science experiments, and curiosity-driven investigations that bring the outside world into the classroom and spark a lifelong love of learning.",
     color:       "forest",
+    src:         "/academics/enrichment-3.jpg",
   },
 ];
 
 export function Enrichment({ clubs: cmsClubs }: { clubs?: typeof CLUBS[number][] }) {
   return (
     <>
-      {/* ── Enrichment Cards ─────────────────────────────── */}
       <section
         className="py-20 lg:py-28"
         style={{ background: "white" }}
@@ -56,21 +58,21 @@ export function Enrichment({ clubs: cmsClubs }: { clubs?: typeof CLUBS[number][]
                   initial={{ opacity: 0, y: 28 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-50px" }}
-                  transition={{ delay: i * 0.12, duration: 0.5, ease: "easeOut" as const }}
+                  transition={{ delay: i * 0.12, duration: 0.5, ease: "easeOut" }}
                   className="group rounded-2xl overflow-hidden"
                   style={{ border: "1.5px solid var(--color-border)" }}
                 >
                   {/* Photo thumbnail */}
-                  <div className="relative">
-                    <PhotoBlock
-                      aspectRatio="video"
-                      label={club.title}
-                      rounded={false}
-                      className="transition-transform duration-500 group-hover:scale-105"
+                  <div className="relative aspect-video overflow-hidden">
+                    <Image
+                      src={club.src}
+                      alt={club.title}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      sizes="(max-width: 640px) 100vw, 33vw"
                     />
-                    {/* Tag badge */}
                     <span
-                      className="absolute top-3 left-3 rounded-full px-3 py-1 text-xs font-bold uppercase tracking-wider"
+                      className="absolute top-3 left-3 rounded-full px-3 py-1 text-xs font-bold uppercase tracking-wider z-10"
                       style={
                         isGold
                           ? { background: "var(--color-gold)", color: "var(--color-forest-deep)" }
@@ -94,10 +96,7 @@ export function Enrichment({ clubs: cmsClubs }: { clubs?: typeof CLUBS[number][]
                       >
                         <Icon size={16} strokeWidth={1.8} aria-hidden="true" />
                       </div>
-                      <h3
-                        className="font-serif text-xl"
-                        style={{ color: "var(--color-forest-deep)" }}
-                      >
+                      <h3 className="font-serif text-xl" style={{ color: "var(--color-forest-deep)" }}>
                         {club.title}
                       </h3>
                     </div>
@@ -112,7 +111,7 @@ export function Enrichment({ clubs: cmsClubs }: { clubs?: typeof CLUBS[number][]
         </div>
       </section>
 
-      {/* ── Academic CTA ─────────────────────────────────── */}
+      {/* Academic CTA */}
       <section
         className="py-16 lg:py-20"
         style={{ background: "var(--color-forest-light)" }}
@@ -123,7 +122,7 @@ export function Enrichment({ clubs: cmsClubs }: { clubs?: typeof CLUBS[number][]
             initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, ease: "easeOut" as const }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
             className="font-serif text-4xl lg:text-5xl"
             style={{ color: "var(--color-forest-deep)" }}
           >
@@ -133,7 +132,7 @@ export function Enrichment({ clubs: cmsClubs }: { clubs?: typeof CLUBS[number][]
             initial={{ opacity: 0, y: 14 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.1, duration: 0.5, ease: "easeOut" as const }}
+            transition={{ delay: 0.1, duration: 0.5, ease: "easeOut" }}
             className="mt-4 text-base lg:text-lg"
             style={{ color: "var(--color-slate)" }}
           >
@@ -143,16 +142,10 @@ export function Enrichment({ clubs: cmsClubs }: { clubs?: typeof CLUBS[number][]
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.2, duration: 0.45, ease: "easeOut" as const }}
+            transition={{ delay: 0.2, duration: 0.45, ease: "easeOut" }}
             className="mt-8 flex flex-wrap gap-4 justify-center"
           >
-            <Button
-              href="/contact"
-              variant="primary"
-              size="lg"
-              icon={<ArrowRight size={17} />}
-              iconPosition="right"
-            >
+            <Button href="/contact" variant="primary" size="lg" icon={<ArrowRight size={17} />} iconPosition="right">
               Schedule a Visit
             </Button>
             <Button href="/admissions" variant="outline" size="lg">

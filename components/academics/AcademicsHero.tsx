@@ -1,9 +1,9 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
-import { PhotoBlock } from "@/components/ui/PhotoBlock";
 
 const BADGES = ["EYFS Aligned", "100% Faith-Centered", "Holistic Learning"];
 
@@ -14,7 +14,6 @@ export function AcademicsHero({ cms }: { cms?: { heading?: string; subheading?: 
       style={{ background: "var(--color-cream)" }}
       aria-label="Academics hero"
     >
-      {/* Subtle dot pattern */}
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.03]"
         style={{
@@ -33,42 +32,25 @@ export function AcademicsHero({ cms }: { cms?: { heading?: string; subheading?: 
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
-            <p
-              className="mb-4 text-xs font-bold uppercase tracking-widest"
-              style={{ color: "var(--color-forest-mid)" }}
-            >
+            <p className="mb-4 text-xs font-bold uppercase tracking-widest" style={{ color: "var(--color-forest-mid)" }}>
               Academics
             </p>
-            <h1
-              className="font-serif text-5xl sm:text-6xl leading-[1.08]"
-              style={{ color: "var(--color-forest-deep)" }}
-            >
+            <h1 className="font-serif text-5xl sm:text-6xl leading-[1.08]" style={{ color: "var(--color-forest-deep)" }}>
               An Academic Journey
               <span className="block italic" style={{ color: "var(--color-forest)" }}>
                 Guided by Faith
               </span>
             </h1>
-            <p
-              className="mt-6 text-lg leading-relaxed max-w-[44ch]"
-              style={{ color: "var(--color-slate)" }}
-            >
+            <p className="mt-6 text-lg leading-relaxed max-w-[44ch]" style={{ color: "var(--color-slate)" }}>
               Our curriculum marries the rigour of the EYFS framework with deep Islamic
               values — cultivating curious, confident, and compassionate young learners.
             </p>
 
-            {/* Badges */}
             <ul className="mt-7 flex flex-col gap-2.5" role="list">
               {BADGES.map((b) => (
                 <li key={b} className="flex items-center gap-2.5">
-                  <CheckCircle2
-                    size={17}
-                    strokeWidth={2}
-                    style={{ color: "var(--color-forest)" }}
-                    aria-hidden="true"
-                  />
-                  <span className="text-sm font-medium" style={{ color: "var(--color-slate)" }}>
-                    {b}
-                  </span>
+                  <CheckCircle2 size={17} strokeWidth={2} style={{ color: "var(--color-forest)" }} aria-hidden="true" />
+                  <span className="text-sm font-medium" style={{ color: "var(--color-slate)" }}>{b}</span>
                 </li>
               ))}
             </ul>
@@ -86,13 +68,15 @@ export function AcademicsHero({ cms }: { cms?: { heading?: string; subheading?: 
             transition={{ duration: 0.65, delay: 0.2, ease: "easeOut" }}
             className="relative hidden lg:block"
           >
-            <PhotoBlock
-              aspectRatio="portrait"
-              label="Learning Environment"
-              className="w-full"
-              rounded
-            />
-            {/* Floating 100% badge */}
+            <div className="relative w-full aspect-[3/4] rounded-2xl overflow-hidden">
+              <Image
+                src="/home/IMG-20260513-WA0006.jpg"
+                alt="Learning environment at Surraya"
+                fill
+                className="object-cover"
+                sizes="50vw"
+              />
+            </div>
             <div
               className="absolute -bottom-5 -left-5 flex flex-col items-center justify-center h-28 w-28 rounded-full shadow-xl"
               style={{ background: "var(--color-forest)", color: "white" }}
@@ -103,6 +87,7 @@ export function AcademicsHero({ cms }: { cms?: { heading?: string; subheading?: 
               </span>
             </div>
           </motion.div>
+
         </div>
       </div>
     </section>

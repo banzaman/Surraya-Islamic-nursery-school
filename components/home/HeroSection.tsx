@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight, Star } from "lucide-react";
 import { Button } from "@/components/ui/Button";
@@ -15,15 +16,21 @@ const stagger = {
   show:   { transition: { staggerChildren: 0.13, delayChildren: 0.1 } },
 };
 
-// Photo grid cells — mix of tall/wide placeholders
 const GRID_PHOTOS = [
-  { label: "Morning Circle",    span: "row-span-2",  bg: "from-forest/20 to-forest/40" },
-  { label: "Quran Reading",     span: "",            bg: "from-gold/20 to-gold/40" },
-  { label: "Creative Arts",     span: "",            bg: "from-forest-mid/20 to-forest/30" },
-  { label: "Outdoor Play",      span: "col-span-2",  bg: "from-sand to-forest-light" },
+  { label: "Morning Circle", span: "row-span-2", src: "/home/IMG-20260513-WA0006.jpg" },
+  { label: "Quran Reading",  span: "",           src: "/home/IMG-20260513-WA0009.jpg" },
+  { label: "Creative Arts",  span: "",           src: "/home/IMG-20260513-WA0011.jpg" },
+  { label: "Outdoor Play",   span: "col-span-2", src: "/home/IMG-20260513-WA0015.jpg" },
 ];
 
-interface HeroCMS { heading?: string; subheading?: string; badge?: string; ctaPrimary?: string; ctaSecondary?: string }
+interface HeroCMS {
+  heading?:     string;
+  subheading?:  string;
+  badge?:       string;
+  ctaPrimary?:  string;
+  ctaSecondary?: string;
+}
+
 export function HeroSection({ cms }: { cms?: HeroCMS }) {
   return (
     <section
@@ -31,7 +38,7 @@ export function HeroSection({ cms }: { cms?: HeroCMS }) {
       style={{ background: "var(--color-cream)" }}
       aria-label="Welcome to Surraya"
     >
-      {/* ── Subtle background pattern ───────────────────── */}
+      {/* ── Subtle background pattern ───────────────────────── */}
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.035]"
         style={{
@@ -45,7 +52,7 @@ export function HeroSection({ cms }: { cms?: HeroCMS }) {
       <div className="relative mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
-          {/* ── Left: Copy ──────────────────────────────── */}
+          {/* ── Left: Copy ───────────────────────────────────── */}
           <motion.div
             variants={stagger}
             initial="hidden"
@@ -109,7 +116,7 @@ export function HeroSection({ cms }: { cms?: HeroCMS }) {
               </Button>
             </motion.div>
 
-            {/* Quick trust strip (simplified) */}
+            {/* Quick trust strip */}
             <motion.div
               variants={fadeUp}
               className="mt-10 flex flex-wrap gap-6 text-sm font-medium"
@@ -132,7 +139,7 @@ export function HeroSection({ cms }: { cms?: HeroCMS }) {
             </motion.div>
           </motion.div>
 
-          {/* ── Right: Photo grid ───────────────────────── */}
+          {/* ── Right: Photo grid ────────────────────────────── */}
           <motion.div
             initial={{ opacity: 0, x: 32 }}
             animate={{ opacity: 1, x: 0 }}
@@ -140,19 +147,26 @@ export function HeroSection({ cms }: { cms?: HeroCMS }) {
             className="hidden lg:grid grid-cols-2 grid-rows-3 gap-3 h-[520px]"
             aria-hidden="true"
           >
-            {GRID_PHOTOS.map(({ label, span, bg }, i) => (
+            {GRID_PHOTOS.map(({ label, span, src }, i) => (
               <motion.div
                 key={label}
                 initial={{ opacity: 0, scale: 0.94 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.35 + i * 0.1, duration: 0.5, ease: "easeOut" }}
-                className={`rounded-2xl overflow-hidden flex items-end p-3 bg-gradient-to-br ${bg} ${span}`}
+                className={`rounded-2xl overflow-hidden relative flex items-end p-3 ${span}`}
               >
+                <Image
+                  src={src}
+                  alt={label}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 50vw, 25vw"
+                />
                 <span
-                  className="text-xs font-semibold px-2.5 py-1 rounded-full"
+                  className="relative z-10 text-xs font-semibold px-2.5 py-1 rounded-full"
                   style={{
-                    background: "rgba(255,255,255,0.75)",
-                    color: "var(--color-forest-deep)",
+                    background:     "rgba(255,255,255,0.75)",
+                    color:          "var(--color-forest-deep)",
                     backdropFilter: "blur(6px)",
                   }}
                 >
@@ -165,7 +179,7 @@ export function HeroSection({ cms }: { cms?: HeroCMS }) {
         </div>
       </div>
 
-      {/* ── Bottom wave divider ─────────────────────────── */}
+      {/* ── Bottom wave divider ─────────────────────────────── */}
       <div
         className="pointer-events-none absolute bottom-0 left-0 right-0 h-12 overflow-hidden"
         aria-hidden="true"

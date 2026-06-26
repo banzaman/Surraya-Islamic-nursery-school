@@ -1,4 +1,3 @@
-@'
 import type { Metadata } from "next";
 import { SITE, STATS, PILLARS, PAYMENT_CARDS } from "@/lib/constants";
 import { HeroSection }       from "@/components/home/HeroSection";
@@ -28,4 +27,3 @@ export default function HomePage() {
     </>
   );
 }
-'@ | Set-Content app/page.tsx -Encoding UTF8

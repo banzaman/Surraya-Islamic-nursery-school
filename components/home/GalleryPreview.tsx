@@ -1,18 +1,18 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 
-// Six gallery cells with varied heights for masonry feel
 const GALLERY_ITEMS = [
-  { label: "Morning Assembly",   aspect: "aspect-[4/5]",  bg: "from-[#1a5c38]/25 to-[#1a5c38]/45" },
-  { label: "Quranic Studies",    aspect: "aspect-square", bg: "from-[#d4a017]/20 to-[#d4a017]/40" },
-  { label: "Outdoor Exploration",aspect: "aspect-[4/3]",  bg: "from-[#2d7a4f]/20 to-[#1a5c38]/35" },
-  { label: "Arts & Crafts",      aspect: "aspect-[3/4]",  bg: "from-[#f0ebe0] to-[#e8f5ee]" },
-  { label: "Story Time",         aspect: "aspect-square", bg: "from-[#fef3c7] to-[#d4a017]/30" },
-  { label: "Team Play",          aspect: "aspect-[4/3]",  bg: "from-[#e8f5ee] to-[#2d7a4f]/25" },
+  { label: "Morning Assembly",    aspect: "aspect-[4/5]",  src: "/gallery/IMG-20260513-WA0006.jpg" },
+  { label: "Quranic Studies",     aspect: "aspect-square", src: "/gallery/IMG-20260513-WA0009.jpg" },
+  { label: "Outdoor Exploration", aspect: "aspect-[4/3]",  src: "/gallery/IMG-20260513-WA0011.jpg" },
+  { label: "Arts & Crafts",       aspect: "aspect-[3/4]",  src: "/gallery/IMG-20260513-WA0015.jpg" },
+  { label: "Story Time",          aspect: "aspect-square", src: "/gallery/IMG-20260513-WA0070.jpg" },
+  { label: "Team Play",           aspect: "aspect-[4/3]",  src: "/gallery/IMG-20260513-WA0071.jpg" },
 ];
 
 export function GalleryPreview({ gallery: cmsGallery }: { gallery?: any[] | null }) {
@@ -23,6 +23,7 @@ export function GalleryPreview({ gallery: cmsGallery }: { gallery?: any[] | null
       aria-label="School Gallery"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+
         {/* Header row */}
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-12">
           <SectionHeader
@@ -41,7 +42,7 @@ export function GalleryPreview({ gallery: cmsGallery }: { gallery?: any[] | null
           </Link>
         </div>
 
-        {/* Masonry-style grid using CSS columns */}
+        {/* Masonry-style grid */}
         <div className="columns-2 sm:columns-3 gap-4 space-y-0">
           {(cmsGallery ?? GALLERY_ITEMS).map((item, i) => (
             <motion.div
@@ -52,10 +53,16 @@ export function GalleryPreview({ gallery: cmsGallery }: { gallery?: any[] | null
               transition={{ delay: i * 0.08, duration: 0.45, ease: "easeOut" }}
               className="break-inside-avoid mb-4 group relative overflow-hidden rounded-2xl cursor-pointer"
             >
-              {/* Photo placeholder */}
-              <div
-                className={`w-full ${item.aspect} bg-gradient-to-br ${item.bg} flex items-end`}
-              />
+              {/* Photo */}
+              <div className={`w-full ${item.aspect} relative overflow-hidden`}>
+                <Image
+                  src={item.src}
+                  alt={item.label}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  sizes="(max-width: 640px) 50vw, 33vw"
+                />
+              </div>
 
               {/* Hover overlay */}
               <div
@@ -87,6 +94,7 @@ export function GalleryPreview({ gallery: cmsGallery }: { gallery?: any[] | null
             <ArrowRight size={15} />
           </Link>
         </div>
+
       </div>
     </section>
   );

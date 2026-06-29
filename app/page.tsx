@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { SITE, STATS, PILLARS, PAYMENT_CARDS } from "@/lib/constants";
-import { HeroSection }       from "@/components/home/HeroSection";
-import { FoundationPillars } from "@/components/home/FoundationPillars";
-import { PaymentHub }        from "@/components/home/PaymentHub";
-import { GalleryPreview }    from "@/components/home/GalleryPreview";
-import { StatsCTA }          from "@/components/home/StatsCTA";
+import { HeroSection } from "@/components/home/HeroSection";
+import { AboutUs }      from "@/components/home/FoundationPillars";
+import { PaymentHub }   from "@/components/home/PaymentHub";
+import { GalleryPreview } from "@/components/home/GalleryPreview";
+import { StatsCTA }     from "@/components/home/StatsCTA";
 
 export const metadata: Metadata = {
   title:       `${SITE.name} – ${SITE.tagline}`,
@@ -20,7 +20,7 @@ export default function HomePage() {
   return (
     <>
       <HeroSection />
-      <FoundationPillars pillars={[...PILLARS]} />
+      <AboutUs />
       <PaymentHub        cards={[...PAYMENT_CARDS]} />
       <GalleryPreview />
       <StatsCTA          stats={[...STATS]} />

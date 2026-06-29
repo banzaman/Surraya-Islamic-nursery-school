@@ -69,12 +69,12 @@ export function HeroSection({ cms }: { cms?: HeroCMS }) {
               className="font-serif text-5xl sm:text-6xl lg:text-[3.75rem] xl:text-7xl leading-[1.08] tracking-tight"
               style={{ color: "var(--color-forest-deep)" }}
             >
-              {cms?.heading ?? "Nurturing"}
+              {cms?.heading ?? "Building"}
               <span
                 className="block italic"
                 style={{ color: "var(--color-forest)" }}
               >
-                {cms?.subheading ?? "Minds Rooted in Faith"}
+                {cms?.subheading ?? "the foundation of tomorrow"}
               </span>
             </motion.h1>
 
@@ -84,7 +84,7 @@ export function HeroSection({ cms }: { cms?: HeroCMS }) {
               style={{ color: "var(--color-slate)" }}
             >
               An EYFS-aligned early-years education that weaves Islamic values into
-              every lesson ΓÇö preparing your child to grow with knowledge, character,
+              every lesson and preparing your child to grow with knowledge, character,
               and confidence.
             </motion.p>
 

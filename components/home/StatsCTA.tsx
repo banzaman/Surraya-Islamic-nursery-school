@@ -156,7 +156,7 @@ export function StatsCTA({ stats: cmsStats }: { stats?: typeof STATS[number][] }
             className="mt-8 flex flex-wrap gap-4 justify-center"
           >
             <Button
-              href="/admissions"
+              href="/contact"
               variant="secondary"
               size="lg"
               icon={<ArrowRight size={18} />}

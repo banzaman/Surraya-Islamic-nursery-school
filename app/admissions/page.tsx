@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { SITE }               from "@/lib/constants";
+import { SITE }           from "@/lib/constants";
 import { AdmissionsHero } from "@/components/admissions/AdmissionsHero";
 import { WhoCanApply }    from "@/components/admissions/WhoCanApply";
 import { HowToJoin }      from "@/components/admissions/HowToJoin";

@@ -1,8 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { BookMarked, Star, Moon } from "lucide-react";
+import { PhotoBlock } from "@/components/ui/PhotoBlock";
 
 const PILLARS = [
   {
@@ -22,13 +22,14 @@ const PILLARS = [
   },
 ];
 
-export function IslamicStudies({ cms }: { cms?: any }) {
+export function IslamicStudies({ cms }: { cms?: { heading?: string; body?: string; hadith?: string; hadithSource?: string; pillars?: any[] } }) {
   return (
     <section
       className="py-20 lg:py-28 relative overflow-hidden"
       style={{ background: "var(--color-forest-deep)" }}
       aria-label="Integrated Islamic Studies"
     >
+      {/* Decorative circle */}
       <div
         className="pointer-events-none absolute -top-20 -right-20 h-80 w-80 rounded-full opacity-[0.07]"
         style={{ background: "var(--color-gold)" }}
@@ -43,18 +44,18 @@ export function IslamicStudies({ cms }: { cms?: any }) {
             initial={{ opacity: 0, x: -28 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
+            transition={{ duration: 0.6, ease: "easeOut" as const }}
             className="relative"
           >
-            <div className="relative w-full aspect-[3/4] rounded-2xl overflow-hidden opacity-90">
-              <Image
-                src="/academics/enrichment-2.jpg"
-                alt="Islamic studies at Surraya"
-                fill
-                className="object-cover"
-                sizes="50vw"
-              />
-            </div>
+            <PhotoBlock
+              aspectRatio="portrait"
+              label="Islamic Studies"
+              rounded
+              className="w-full opacity-90"
+              imageSrc="/academics/enrichment-2.jpg"
+              imageAlt="Children engaged in Islamic learning"
+            />
+            {/* Hadith card overlay */}
             <div
               className="absolute -bottom-6 -right-4 lg:-right-8 max-w-[260px] rounded-2xl p-5 shadow-2xl"
               style={{ background: "var(--color-gold)", color: "var(--color-forest-deep)" }}
@@ -73,22 +74,31 @@ export function IslamicStudies({ cms }: { cms?: any }) {
             initial={{ opacity: 0, x: 28 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
+            transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" as const }}
           >
-            <p className="mb-3 text-xs font-bold uppercase tracking-widest" style={{ color: "var(--color-gold-bright)" }}>
+            <p
+              className="mb-3 text-xs font-bold uppercase tracking-widest"
+              style={{ color: "var(--color-gold-bright)" }}
+            >
               Islamic Studies
             </p>
-            <h2 className="font-serif text-4xl lg:text-5xl text-white leading-tight">
+            <h2
+              className="font-serif text-4xl lg:text-5xl text-white leading-tight"
+            >
               Faith Woven Into
               <span className="block italic" style={{ color: "var(--color-gold-bright)" }}>
                 Every Lesson
               </span>
             </h2>
-            <p className="mt-5 text-base leading-relaxed" style={{ color: "rgba(255,255,255,0.70)" }}>
+            <p
+              className="mt-5 text-base leading-relaxed"
+              style={{ color: "rgba(255,255,255,0.70)" }}
+            >
               At Surraya, Islamic Studies is not a standalone subject — it is the thread
               running through everything we do, shaping how children learn, relate, and grow.
             </p>
 
+            {/* Pillars */}
             <ul className="mt-8 flex flex-col gap-6" role="list">
               {PILLARS.map((p, i) => {
                 const Icon = p.icon;
@@ -98,7 +108,7 @@ export function IslamicStudies({ cms }: { cms?: any }) {
                     initial={{ opacity: 0, x: 18 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
-                    transition={{ delay: 0.2 + i * 0.1, duration: 0.45, ease: "easeOut" }}
+                    transition={{ delay: 0.2 + i * 0.1, duration: 0.45, ease: "easeOut" as const }}
                     className="flex gap-4"
                   >
                     <div
@@ -118,7 +128,6 @@ export function IslamicStudies({ cms }: { cms?: any }) {
               })}
             </ul>
           </motion.div>
-
         </div>
       </div>
     </section>

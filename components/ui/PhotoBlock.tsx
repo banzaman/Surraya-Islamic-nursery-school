@@ -1,13 +1,13 @@
-import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { ImageIcon } from "lucide-react";
 
 interface PhotoBlockProps {
-  className?:   string;
-  label?:       string;
-  src?:         string;
+  className?:  string;
+  label?:      string;
   aspectRatio?: "square" | "video" | "portrait" | "wide";
-  rounded?:     boolean;
+  rounded?:    boolean;
+  imageSrc?:   string;
+  imageAlt?:   string;
 }
 
 const aspectMap = {
@@ -20,29 +20,29 @@ const aspectMap = {
 export function PhotoBlock({
   className,
   label,
-  src,
   aspectRatio = "video",
   rounded     = true,
+  imageSrc,
+  imageAlt,
 }: PhotoBlockProps) {
   return (
     <div
       className={cn(
         "relative overflow-hidden flex items-center justify-center",
-        !src && "bg-gradient-to-br from-[var(--color-forest-light)] to-[var(--color-sand)]",
+        "bg-gradient-to-br from-[var(--color-forest-light)] to-[var(--color-sand)]",
         aspectMap[aspectRatio],
         rounded && "rounded-2xl",
         className,
       )}
       role="img"
-      aria-label={label ?? "School photo"}
+      aria-label={label ?? "Photo placeholder"}
     >
-      {src ? (
-        <Image
-          src={src}
-          alt={label ?? "School photo"}
-          fill
-          className="object-cover"
-          sizes="(max-width: 768px) 100vw, 50vw"
+      {imageSrc ? (
+        <img
+          src={imageSrc}
+          alt={imageAlt ?? label ?? "Academic photo"}
+          className="h-full w-full object-cover"
+          loading="lazy"
         />
       ) : (
         <div className="flex flex-col items-center gap-2 text-[var(--color-forest-mid)] opacity-50">

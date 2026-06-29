@@ -102,7 +102,7 @@ export function Navbar() {
 
           {/* ── Desktop CTA ───────────────────────────── */}
           <div className="hidden md:block">
-            <Button href="/admissions" variant="primary" size="sm">
+            <Button href="/contact" variant="primary" size="sm">
               Apply Now
             </Button>
           </div>
@@ -155,7 +155,7 @@ export function Navbar() {
             );
           })}
           <li className="pt-2 border-t border-[var(--color-border)]">
-            <Button href="/admissions" variant="primary" size="md" fullWidth>
+            <Button href="/contact" variant="primary" size="md" fullWidth>
               Apply Now
             </Button>
           </li>

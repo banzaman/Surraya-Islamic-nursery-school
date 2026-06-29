@@ -12,7 +12,7 @@ const ICONS: Record<string, React.ElementType> = {
 };
 
 export function FoundationPillars({ pillars: cmsPillars }: { pillars?: typeof PILLARS[number][] }) {
-  return (
+      "Surraya is made possible through the generous support of our dear friends in Malaysia. Their commitment to Islamic education and community development allows us to raise respectful, confident, and God-conscious leaders of tomorrow. JazakAllah khairan to our Malaysian family. 🇲🇾🇺🇬",
     <section
       className="py-20 lg:py-28"
       style={{ background: "white" }}

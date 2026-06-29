@@ -71,6 +71,7 @@ export const PAYMENT_CARDS = [
     description: "Secure and simple term-by-term payment for enrolled families.",
     badge: null,
     highlight: false,
+    ctaHref: "/admissions#fees",
   },
   {
     title: "Development Fund",

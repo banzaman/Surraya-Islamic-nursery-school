@@ -37,6 +37,7 @@ export function FeeStructure({ fees: cmsFees, siblingDiscount: cmsSibling }: { f
     <>
       {/* ── Fee Cards ─────────────────────────────────────── */}
       <section
+        id="fees"
         className="py-20 lg:py-28"
         style={{ background: "white" }}
         aria-label="Fee structure"

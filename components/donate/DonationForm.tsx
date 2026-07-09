@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { Heart, ArrowRight, Lock } from "lucide-react";
 
 type Frequency  = "one-time" | "monthly";
-type Designation = "General Fund" | "Scholarship Fund" | "Facility Development" | "Library & Resources" | "Teacher Training";
+type Designation = "General Fund" | "Scholarship Fund" | "Facility Development" | "Library & Resources" | "Teacher Training" | "KORBAN";
 
 const DEFAULT_PRESETS = [25, 50, 100, 250, 500];
 const DESIGNATIONS: Designation[] = [
@@ -14,6 +14,7 @@ const DESIGNATIONS: Designation[] = [
   "Facility Development",
   "Library & Resources",
   "Teacher Training",
+  "KORBAN",
 ];
 
 const HADITH =

@@ -21,6 +21,7 @@ const SocialIcon = ({ platform }: { platform: string }) => {
 const SOCIAL = [
   { platform: "Instagram", href: "https://www.instagram.com/surraya_islamic_school_/" },
   { platform: "TikTok",    href: "https://www.tiktok.com/@surraya.islamic.n" },
+  { platform: "YouTube",   href: "https://www.youtube.com/channel/UCk5lTGQ3_mnC4n7DDzy1cHg" },
 ];
 
 export function Footer() {

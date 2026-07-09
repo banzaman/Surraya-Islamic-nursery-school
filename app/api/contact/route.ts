@@ -1,10 +1,22 @@
 export async function POST(request: Request) {
   try {
     const body = await request.json();
+    const basinEndpoint = process.env.BASIN_FORM_ENDPOINT;
 
-    const response = await fetch("https://usebasin.com/api/v1/6685e96859c4ebda9cd8921f398039c3", {
+    if (!basinEndpoint) {
+      console.error("BASIN_FORM_ENDPOINT is not configured");
+      return Response.json(
+        { error: "Form service is not configured" },
+        { status: 500 }
+      );
+    }
+
+    const response = await fetch(basinEndpoint, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
       body: JSON.stringify(body),
     });
 

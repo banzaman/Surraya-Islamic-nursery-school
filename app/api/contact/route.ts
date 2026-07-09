@@ -11,18 +11,26 @@ export async function POST(request: Request) {
       );
     }
 
+    const formBody = new URLSearchParams();
+    for (const [key, value] of Object.entries(body)) {
+      if (value !== undefined && value !== null) {
+        formBody.append(key, String(value));
+      }
+    }
+
     const response = await fetch(basinEndpoint, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
         Accept: "application/json",
       },
-      body: JSON.stringify(body),
+      body: formBody.toString(),
     });
 
     if (!response.ok) {
+      const errorText = await response.text();
       return Response.json(
-        { error: "Failed to send message" },
+        { error: errorText || "Failed to send message" },
         { status: response.status }
       );
     }

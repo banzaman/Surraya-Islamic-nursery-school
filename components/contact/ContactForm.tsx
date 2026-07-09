@@ -63,10 +63,11 @@ export function ContactForm({ subjects: cmsSubjects }: { subjects?: string[] }) 
           setSent(true);
           setValues({ name: "", email: "", subject: "", message: "" });
         } else {
-          setErrors({ message: "Failed to send message. Please try again." });
+          const data = await response.json().catch(() => null);
+          setErrors({ message: data?.error || "Failed to send message. Please try again." } as any);
         }
       } catch (error) {
-        setErrors({ message: "Failed to send message. Please try again." });
+        setErrors({ message: "Failed to send message. Please try again." } as any);
       } finally {
         setLoading(false);
       }

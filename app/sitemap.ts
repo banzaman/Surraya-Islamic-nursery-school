@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { SITE } from "@/lib/constants";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base        = SITE.url;
+  const base = "https://surrayaislamicschool.com";
   const lastModified = new Date();
 
   return [

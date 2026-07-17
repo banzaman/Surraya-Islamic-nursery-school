@@ -21,6 +21,7 @@ const SocialSVG = ({ platform }: { platform: string }) => {
     Facebook: "M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z",
     Instagram:
       "M16 2H8a6 6 0 0 0-6 6v8a6 6 0 0 0 6 6h8a6 6 0 0 0 6-6V8a6 6 0 0 0-6-6zm4 14a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V8a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v8zm-8-8a4 4 0 1 0 0 8 4 4 0 0 0 0-8zm0 6a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm5-6.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z",
+    YouTube: "M22.54 6.42a2.78 2.78 0 0 0-1.95-1.97C18.88 4 12 4 12 4s-6.88 0-8.59.45A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.97C5.12 20 12 20 12 20s6.88 0 8.59-.45a2.78 2.78 0 0 0 1.95-1.97A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58zM9.75 15.02V8.98l5.75 3.02-5.75 3.02z",
   };
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true">
@@ -62,10 +63,11 @@ export function ContactForm({ subjects: cmsSubjects }: { subjects?: string[] }) 
           setSent(true);
           setValues({ name: "", email: "", subject: "", message: "" });
         } else {
-          setErrors({ message: "Failed to send message. Please try again." });
+          const data = await response.json().catch(() => null);
+          setErrors({ message: data?.error || "Failed to send message. Please try again." } as any);
         }
       } catch (error) {
-        setErrors({ message: "Failed to send message. Please try again." });
+        setErrors({ message: "Failed to send message. Please try again." } as any);
       } finally {
         setLoading(false);
       }
@@ -201,17 +203,21 @@ export function ContactForm({ subjects: cmsSubjects }: { subjects?: string[] }) 
                 Follow Us
               </p>
               <div className="flex gap-3">
-                {["Facebook", "Instagram"].map((p) => (
+                {[
+                  { platform: "Facebook", href: "#" },
+                  { platform: "Instagram", href: "#" },
+                  { platform: "YouTube", href: "https://www.youtube.com/channel/UCk5lTGQ3_mnC4n7DDzy1cHg" },
+                ].map((social) => (
                   <a
-                    key={p}
-                    href="#"
-                    aria-label={p}
+                    key={social.platform}
+                    href={social.href}
+                    aria-label={social.platform}
                     className="flex h-9 w-9 items-center justify-center rounded-full transition-all duration-200"
                     style={{ background: "var(--color-forest-light)", color: "var(--color-forest)" }}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <SocialSVG platform={p} />
+                    <SocialSVG platform={social.platform} />
                   </a>
                 ))}
               </div>

@@ -7,7 +7,7 @@ export const SITE = {
   url: "https://surraya.ac.ug",
   founded: 2009,
   email: "surrayaislamicnurseryschool@gmail.com",
-  phone: "+256757797639",
+  phone: "+256759768571",
   address: "Makerere, Kampala, Uganda",
   mapLink: "https://share.google/sUWFVRZ6pe11cHtVT",
 } as const;
@@ -15,6 +15,7 @@ export const SITE = {
 // ─── Navigation ──────────────────────────────────────────
 export const NAV_LINKS = [
   { label: "Home",       href: "/" },
+  { label: "About",      href: "/story" },
   { label: "Academics",  href: "/academics" },
   { label: "Admissions", href: "/admissions" },
   { label: "Donate",     href: "/donate" },

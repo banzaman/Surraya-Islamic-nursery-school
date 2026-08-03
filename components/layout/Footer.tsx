@@ -137,7 +137,7 @@ export function Footer() {
               <p className="flex items-center gap-2">
                 <Phone size={14} className="shrink-0" style={{ color: "var(--color-gold)" }} />
                 <span className="hover:text-white transition-colors">
-                  Contact: 0703329154, +256 757 797 639
+                  Contact: 0703329154, +256 759 768 571
                 </span>
               </p>
               <p className="flex items-center gap-2">
